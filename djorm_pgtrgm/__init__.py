@@ -6,7 +6,7 @@ from django.db.models.query import QuerySet
 from django.db.models.sql.constants import QUERY_TERMS
 from django.contrib.gis.db.models.sql.query import ALL_TERMS
 
-db_backends_allowed = ('postgresql')
+db_backends_allowed = ('postgresql',)
 
 
 def get_prep_lookup(self, lookup_type, value):
