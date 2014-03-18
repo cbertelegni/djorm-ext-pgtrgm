@@ -4,7 +4,6 @@ from django.db import models
 from django.db.models.fields import Field, subclassing
 from django.db.models.query import QuerySet
 from django.db.models.sql.constants import QUERY_TERMS
-from django.contrib.gis.db.models.sql.query import ALL_TERMS
 
 db_backends_allowed = ('postgresql',)
 
@@ -50,12 +49,6 @@ if backend_allowed:
         QUERY_TERMS.add('similar')
     else:
         QUERY_TERMS['similar'] = None
-
-    if backend_allowed == 'postgis':
-        if isinstance(ALL_TERMS, set):
-            ALL_TERMS.add('similar')
-        else:
-            ALL_TERMS['similar'] = None
 
     connection.operators['similar'] = "%%%% %s"
 
